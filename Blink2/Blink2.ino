@@ -12,12 +12,13 @@ void loop() {
 void blinker (unsigned int T3, unsigned int T6){
   static unsigned long last_us_3 = 0;
   static unsigned long last_us_6 = 0;
-  if ((micros() - last_us_3) >= T3){ 
-    last_us_3 = micros(); 
+  unsigned long long curr_ms = micros();
+  if ((curr_ms - last_us_3) >= T3){ 
+    last_us_3 = curr_ms; 
     digitalWrite(3, !digitalRead(3));
   }
-  if ((micros() - last_us_6) >= T6){ 
-    last_us_6 = micros(); 
+  if ((curr_ms - last_us_6) >= T6){ 
+    last_us_6 = curr_ms; 
     digitalWrite(6, !digitalRead(6));
   }
 }
